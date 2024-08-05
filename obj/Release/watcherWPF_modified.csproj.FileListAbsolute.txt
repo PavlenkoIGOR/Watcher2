@@ -1,0 +1,11 @@
+D:\Screens\C#\SCDEV\watcherWPF_modif\watcherWPF_modified\bin\Release\watcherWPF_modified.exe.config
+D:\Screens\C#\SCDEV\watcherWPF_modif\watcherWPF_modified\bin\Release\watcherWPF_modified.exe
+D:\Screens\C#\SCDEV\watcherWPF_modif\watcherWPF_modified\obj\Release\watcherWPF_modified.csprojResolveAssemblyReference.cache
+D:\Screens\C#\SCDEV\watcherWPF_modif\watcherWPF_modified\obj\Release\TitlePage.baml
+D:\Screens\C#\SCDEV\watcherWPF_modif\watcherWPF_modified\obj\Release\Window1.baml
+D:\Screens\C#\SCDEV\watcherWPF_modif\watcherWPF_modified\obj\Release\TitlePage.g.cs
+D:\Screens\C#\SCDEV\watcherWPF_modif\watcherWPF_modified\obj\Release\Window1.g.cs
+D:\Screens\C#\SCDEV\watcherWPF_modif\watcherWPF_modified\obj\Release\App.g.cs
+D:\Screens\C#\SCDEV\watcherWPF_modif\watcherWPF_modified\obj\Release\watcherWPF_modified_MarkupCompile.cache
+D:\Screens\C#\SCDEV\watcherWPF_modif\watcherWPF_modified\obj\Release\watcherWPF_modified.g.resources
+D:\Screens\C#\SCDEV\watcherWPF_modif\watcherWPF_modified\obj\Release\watcherWPF_modified.exe

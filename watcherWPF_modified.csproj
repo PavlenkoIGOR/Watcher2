@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{01F72920-B9D2-4DB5-82A0-0C30CA5F56D6}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>watcherWPF_modified</RootNamespace>
+    <AssemblyName>watcherWPF_modified</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>True</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel">
+      <HintPath>Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word">
+      <HintPath>Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\ForSerialize\A4Serialize.cs" />
+    <Compile Include="BLL\ForSerialize\Grid2x2_Serialize.cs" />
+    <Compile Include="BLL\ForSerialize\GridInStackPanel_Serialize.cs" />
+    <Compile Include="BLL\ForSerialize\SheetSheets_Serialize.cs" />
+    <Compile Include="BLL\ForSerialize\StackPanel_Serialize.cs" />
+    <Compile Include="BLL\ForSerialize\TechProcMainSP_Serialize.cs" />
+    <Compile Include="BLL\ForSerialize\TechProc_Serialize.cs" />
+    <Compile Include="BLL\ForSerialize\TextBox_Serialize.cs" />
+    <Compile Include="BLL\ForSerialize\TP_TabSerialize.cs" />
+    <Compile Include="BLL\Models\A4Format.cs" />
+    <Compile Include="BLL\Models\DocumInfo.cs" />
+    <Compile Include="BLL\Services\A4CreatingClass.cs" />
+    <Compile Include="BLL\Services\AddA4DeleteA4GridClass.cs" />
+    <Compile Include="BLL\Services\AppController\NumeratorTBForPP.cs" />
+    <Compile Include="BLL\Services\AppController\TBForPP.cs" />
+    <Compile Include="BLL\Services\CreateA4AndFillForTechProcess.cs" />
+    <Compile Include="BLL\Services\Creating2x2GridClass.cs" />
+    <Compile Include="BLL\Services\LogicMethods\BrutForceIn2Tab.cs" />
+    <Compile Include="BLL\Services\LogicMethods\SaveLoad\SaveClass.cs" />
+    <Compile Include="BLL\Services\MyCreateFile.cs" />
+    <Compile Include="BLL\Services\MyTraverse.cs" />
+    <Compile Include="BLL\Services\SchemasPages\A4ForSchemasTabCreator.cs" />
+    <Compile Include="BLL\Services\SchemasPages\SchemasGridCreator.cs" />
+    <Compile Include="BLL\Services\SheetAndSheetsGridCreateClass.cs" />
+    <Compile Include="BLL\Services\StackCreatingClass.cs" />
+    <Compile Include="BLL\Services\TechProcGridCreatingClass.cs" />
+    <Compile Include="BLL\ViewModel\DocumInfoViewModel.cs" />
+    <Compile Include="BLL\ViewModel\MainViewModel.cs" />
+    <Compile Include="BLL\ViewModel\RichTBViewModel.cs" />
+    <Compile Include="BLL\ViewModel\TexBViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\WPFAssemblyInfo.cs" />
+    <Compile Include="SchemasPages.xaml.cs">
+      <DependentUpon>SchemasPages.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TitlePage.xaml.cs">
+      <DependentUpon>TitlePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Window1.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="SchemasPages.xaml" />
+    <Page Include="TitlePage.xaml" />
+    <Page Include="Window1.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BLL" />
+    <Folder Include="BLL\ForSerialize" />
+    <Folder Include="BLL\Models" />
+    <Folder Include="BLL\Services\AppController" />
+    <Folder Include="BLL\Services\LogicMethods" />
+    <Folder Include="BLL\Services\LogicMethods\SaveLoad" />
+    <Folder Include="BLL\Services\SchemasPages" />
+    <Folder Include="BLL\ViewModel" />
+    <Folder Include="BLL\Services" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

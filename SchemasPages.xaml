@@ -1,0 +1,25 @@
+<Page x:Class="watcherWPF_modified.SchemasPages"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:watcherWPF_modified.BLL"
+	Title="SchemasPages">
+	
+	<Page.Resources>
+		<local:A4Format x:Key="A4FormatResource"/>
+	</Page.Resources>
+	
+	<ScrollViewer
+		x:Name="scrollViewerSchemas"
+		HorizontalAlignment="Stretch"
+		HorizontalContentAlignment="Center"
+		Background="#FFF7DD1D" >
+	<!-- просто для эксперимента с привязками <Grid
+		Width="{Binding A4WidthVert, Source={StaticResource A4FormatResource}}"
+		Height="{Binding A4HeightVert, Source={StaticResource A4FormatResource}}"
+		Background="Beige"
+		ShowGridLines="True"
+	>
+			
+	</Grid>-->
+</ScrollViewer>
+</Page>

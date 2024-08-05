@@ -1,0 +1,1110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window
+	x:Class="watcherWPF_modified.Window1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="MainWindow"
+	Height="920"
+	Width="1400" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d">
+	<DockPanel
+		LastChildFill="True">
+		<Menu
+			DockPanel.Dock="Top"
+			Height="1.2cm"
+			VerticalAlignment="Center"
+			VerticalContentAlignment="Center"
+			HorizontalContentAlignment="Center"
+			Background="SteelBlue">
+			<MenuItem
+				Header="Файл">
+				<MenuItem
+					Header="Открыть"></MenuItem>
+				<MenuItem
+					Header="Сохранить"
+					x:Name="SaveMy"
+					Click="SerializerDocument"></MenuItem>
+				<MenuItem
+					x:Name="SaveAsWRD"
+					Header="Сохранить как..."></MenuItem>
+				<MenuItem
+					Header="Печать"
+					Click="GoPrinting"></MenuItem>
+				<MenuItem
+					Header="Выход"></MenuItem>
+				<Button
+					Height="25"
+					Content="Ryj"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Center"
+					Margin="0,0,0,0"
+					Click="GetCursor" />
+			</MenuItem>
+			<MenuItem
+				Header="Проверить файлы"></MenuItem>
+			<Button
+				Height="25"
+				Content="Обновить"
+				Click="Renew"
+				Background="Transparent"
+				HorizontalContentAlignment="Left"
+				HorizontalAlignment="Center" />
+			<Button
+				Content="Проверка"
+				Width="75"
+				Height="23"
+				Click="Button_Click" />
+		</Menu>
+		<StatusBar
+			DockPanel.Dock="Bottom"
+			Height="0.8cm" />
+		<ScrollViewer
+			DockPanel.Dock="Left"
+			Background="Aquamarine"
+			Width="5.0cm"
+			MinWidth="5.0cm">
+			<Grid
+				x:Name="violetGrid"
+				Width="100"
+				Height="250"
+				Background="BlueViolet"
+				VerticalAlignment="Top"
+				HorizontalAlignment="Center"
+				MouseLeftButtonDown="Click_func2">
+				<Grid.RowDefinitions>
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<RichTextBox
+					Width="101"
+					Height="76"
+					Grid.Column="0"
+					Grid.Row="0"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Bottom"
+					Margin="175,0,0,133" />
+				<Rectangle
+					Stroke="Black"
+					StrokeThickness="2"
+					Width="120"
+					Height="100"
+					Grid.Column="0"
+					Grid.Row="0"
+					HorizontalAlignment="Right"
+					VerticalAlignment="Bottom"
+					Margin="0,0,-476,-9"
+					Fill="#FFCE2727" />
+				<RichTextBox
+					Height="27"
+					Grid.Column="0"
+					Grid.Row="0"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Bottom"
+					Margin="186,0,-1148,179" />
+				<CheckBox
+					Grid.Column="0"
+					Grid.Row="0"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					Margin="606,391.5,0,0" />
+				<TextBox
+					Grid.Column="0"
+					Grid.Row="0"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Bottom"
+					Margin="273,0,-293,105"
+					Width="100"
+					Height="100" />
+			</Grid>
+		</ScrollViewer>
+		<SelectiveScrollingGrid
+			x:Name="SelectiveGrid"
+			DockPanel.Dock="Right"
+			Background="Red">
+			<TabControl
+				x:Name="myTabControl"
+				HorizontalContentAlignment="Stretch"
+				Background="#FFAA6161"
+				TabStripPlacement="Top"
+				HorizontalAlignment="Stretch"
+				Grid.Row="0"
+				Grid.Column="0">
+				<TabItem
+					Header="Титульный лист">
+					<Frame
+						x:Name="forTitlePage"></Frame>
+				</TabItem>
+				<TabItem
+					x:Name="execProcTab"
+					Header="Выполнение работ">
+					<ScrollViewer
+						x:Name="ScrollViewerForTabs"
+						PreviewMouseWheel="ScrollViewer_PreviewMouseWheel"
+						HorizontalScrollBarVisibility="Visible"
+						VerticalScrollBarVisibility="Visible"
+						Foreground="#FFEDD6D6"
+						HorizontalContentAlignment="Center"
+						Grid.Row="0"
+						Grid.Column="2"
+						VerticalAlignment="Stretch">
+						<StackPanel
+							Orientation="Vertical"
+							VerticalAlignment="Stretch"
+							HorizontalAlignment="Stretch"
+							x:Name="TechProcSP"></StackPanel>
+					</ScrollViewer>
+				</TabItem>
+				<TabItem
+					x:Name="Schemas"
+					Header="Схемы">
+					<Frame
+						x:Name="schemasFrame"></Frame>
+				</TabItem>
+				<TabItem
+					Background="Lime"
+					x:Name="PropChanged"
+					Header="PropChanged"
+					Width="87">
+					<Grid
+						VerticalAlignment="Top"
+						HorizontalAlignment="Stretch"
+						Height="100">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition />
+							<ColumnDefinition />
+							<ColumnDefinition />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
+						<TextBox
+							Grid.Column="0"
+							Grid.Row="0"
+							VerticalAlignment="Stretch"
+							HorizontalAlignment="Stretch"
+							Text="{Binding Mode=TwoWay, Path=TexBVM.docCode, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBox
+							Grid.Column="1"
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"
+							Grid.Row="1"
+							Text="{Binding Mode=TwoWay, Path=TexBVM.docCode, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBox
+							Grid.Column="2"
+							Grid.Row="0"
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"
+							Text="{Binding Mode=TwoWay, Path=TexBVM.docCode, UpdateSourceTrigger=PropertyChanged}" />
+						<TextBox
+							Grid.Column="3"
+							VerticalAlignment="Stretch"
+							HorizontalAlignment="Stretch"
+							Grid.Row="1"
+							Text="{Binding Mode=TwoWay, Path=TexBVM.docCode, UpdateSourceTrigger=PropertyChanged}" />
+					</Grid>
+				</TabItem>
+				<TabItem
+					Header="PropCH2"
+					Background="#FFFF7D00">
+					<Grid
+						Height="100"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Top"
+						Margin="0,100,0,0"
+						Background="#FF5E2753">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition />
+							<ColumnDefinition />
+							<ColumnDefinition />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
+						<TextBox
+							Text="{Binding RichTBVM.Test, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+							Height="20"
+							Width="120"
+							Grid.Column="0"
+							Grid.Row="0"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="4.97637795275588,5,0,0" />
+						<TextBox
+							Text="{Binding RichTBVM.Test, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+							Width="120"
+							Height="20"
+							Grid.Column="1"
+							Grid.Row="0"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							Margin="33,0,0,50" />
+						<TextBox
+							Text="{Binding RichTBVM.Test, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+							Height="20"
+							Width="120"
+							Grid.Column="2"
+							Grid.Row="0"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="42,40,0,0" />
+						<TextBox
+							Text="{Binding RichTBVM.Test, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+							Width="120"
+							Height="20"
+							Grid.Column="3"
+							Grid.Row="0"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="86,40,0,0" />
+					</Grid>
+				</TabItem>
+				<TabItem
+					Header="DocViewer">
+					<Grid
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch">
+						<Grid
+							x:Name="myGrid">
+							<Grid.RowDefinitions>
+								<RowDefinition
+									Height="Auto" />
+								<RowDefinition
+									Height="Auto" />
+							</Grid.RowDefinitions>
+							<TextBlock
+								Grid.Row="0"
+								Text="Cell 1" />
+							<TextBlock
+								Grid.Row="1"
+								Text="Cell 2 with more text" />
+						</Grid>
+						<Button
+							Content="Show Document"
+							Click="ShowDocument_Click"
+							VerticalAlignment="Bottom" />
+						<DocumentViewer
+							x:Name="myDocumentViewer"
+							VerticalAlignment="Top"
+							Height="370" />
+					</Grid>
+				</TabItem>
+				<TabItem
+					Header="FlowDoc">
+					
+						<FixedDocument>
+							<PageContent>
+								<FixedPage Width="29.7cm" Height="21.0cm">
+		<Grid
+			Width="29.7cm"
+			Height="21.0cm"
+			VerticalAlignment="Top"
+			HorizontalAlignment="Stretch"
+			x:Name="A40"
+			ShowGridLines="True"
+			Background="{x:Null}">
+			<Grid.RowDefinitions>
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid
+				Name="_6_anoter"
+				Margin="50,50,50,50"
+				Background="White"
+				VerticalAlignment="Top"
+				Panel.ZIndex="9"
+				Grid.Column="1"
+				ShowGridLines="True">
+				<Grid.RowDefinitions>
+					<RowDefinition
+						x:Name="NumberOfCard"
+						Height="0.5cm" />
+					<RowDefinition
+						Height="0.5cm" />
+					<RowDefinition
+						Height="0.5cm" />
+					<RowDefinition
+						Height="Auto" />
+					<RowDefinition
+						Height="Auto" />
+					<RowDefinition
+						Height="*" />
+					<RowDefinition
+						Height="*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="0.8cm" />
+					<ColumnDefinition
+						Width="0.8cm" />
+					<ColumnDefinition
+						Width="5.0cm" />
+					<ColumnDefinition
+						Width="9.5cm" />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<Grid
+					x:Name="numberAndListsTitle"
+					Grid.Column="4"
+					Background="#FFFF7D7D"
+					VerticalAlignment="Top"
+					HorizontalAlignment="Right"
+					IsEnabled="True"
+					ShowGridLines="True"
+					Grid.Row="5">
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="0.5cm" />
+						<RowDefinition
+							Height="0.5cm" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="1.5cm" />
+						<ColumnDefinition
+							Width="2.0cm" />
+					</Grid.ColumnDefinitions>
+					<TextBox
+						Grid.Column="1"
+						Grid.Row="0"
+						HorizontalAlignment="Stretch"
+						Grid.RowSpan="1"
+						Height="{Binding}"
+						BorderBrush="Black"
+						Margin="0,0,0,0"
+						TextAlignment="Center"
+						VerticalContentAlignment="Center"
+						VerticalAlignment="Stretch"
+						Text="Листов"
+						x:Name="Листов"
+						FontSize="11"
+						FontFamily="Times New Roman"
+						HorizontalContentAlignment="Center"
+						BorderThickness="1,0,2,1"
+						Background="#FFD7D7D7" />
+					<TextBox
+						BorderBrush="Black"
+						x:Name="колвоЛистов"
+						Grid.Column="1"
+						Grid.Row="1"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
+						Margin="0,0,0,0"
+						BorderThickness="1,1,2,2"
+						FontFamily="Times New Roman"
+						FontSize="11" />
+					<TextBox
+						Grid.Column="0"
+						Grid.Row="1"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
+						Margin="0,0,0,0"
+						Grid.ColumnSpan="1"
+						x:Name="НомЛиста"
+						BorderBrush="Black"
+						BorderThickness="2,1,1,2"
+						FontFamily="Times New Roman"
+						FontSize="11" />
+					<TextBox
+						Grid.Column="0"
+						Grid.Row="0"
+						HorizontalAlignment="Stretch"
+						Grid.ColumnSpan="1"
+						TextAlignment="Center"
+						VerticalAlignment="Stretch"
+						Margin="0,0,0,0"
+						BorderBrush="Black"
+						Grid.RowSpan="1"
+						Text="Лист"
+						FontSize="11"
+						FontFamily="Times New Roman"
+						BorderThickness="2,0,1,1"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						Background="#FFD7D7D7" />
+				</Grid>
+				
+				<TextBox
+					Text="1"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					Grid.Column="0"
+					Grid.Row="1"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					Grid.ColumnSpan="1"
+					Grid.RowSpan="1"
+					x:Name="Row1"
+					VerticalContentAlignment="Center"
+					HorizontalContentAlignment="Center"
+					BorderBrush="Black"
+					IsEnabled="True"
+					BorderThickness="2,2,1,1"					
+					Margin="0,0,0,0"					
+					Background="#FFD7D7D7" />
+				
+				<TextBox
+					Grid.Column="1"
+					Grid.Row="1"
+					Grid.RowSpan="1"
+					Margin="0,0,0,0"
+					Grid.ColumnSpan="2"
+					HorizontalAlignment="Stretch"
+					BorderBrush="Black"
+					x:Name="НаименованиеРабот"
+					Text="Наименование работ"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					VerticalContentAlignment="Center"
+					VerticalAlignment="Stretch"
+					IsEnabled="True"
+					BorderThickness="1,2,1,1"
+					Background="#FFD7D7D7" />
+				<TextBox
+					Grid.Column="3"
+					Height="{Binding}"
+					Margin="0,0,0,0"
+					VerticalAlignment="Stretch"
+					HorizontalAlignment="Stretch"
+					Grid.RowSpan="1"
+					BorderBrush="Black"
+					Text="Перечень применяемого оборудования, приспособлений, инструментов, инвентаря и СИЗ"
+					TextWrapping="Wrap"
+					VerticalContentAlignment="Center"
+					HorizontalContentAlignment="Center"
+					x:Name="ПереченьИнстр"
+					IsEnabled="True"
+					Grid.Row="3"
+					Background="#FFD7D7D7"
+					FontFamily="Times New Roman"
+					FontSize="11" />
+				<TextBox
+					Grid.Column="4"
+					BorderBrush="Black"
+					Height="{Binding}"
+					Margin="0,0,0,0"
+					Width="{Binding}"
+					VerticalAlignment="Stretch"
+					HorizontalAlignment="Stretch"
+					Text="Перечень нормативных документов"
+					FontSize="11"
+					TextWrapping="Wrap"
+					TextAlignment="Center"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					BorderThickness="1,1,2,1"
+					IsEnabled="True"
+					Grid.Row="3"
+					Background="#FFD7D7D7"
+					FontFamily="Times New Roman" />
+				<TextBox
+					Grid.Column="2"
+					HorizontalAlignment="Stretch"
+					BorderBrush="Black"
+					VerticalAlignment="Stretch"
+					Margin="0,0,0,0"
+					HorizontalContentAlignment="Center"
+					TextAlignment="Center"
+					VerticalContentAlignment="Center"
+					Height="{Binding}"
+					Text="Условия работы"
+					x:Name="УсловияРаб"
+					IsEnabled="True"
+					TextWrapping="Wrap"
+					Grid.Row="3"
+					FontFamily="Times New Roman"
+					FontSize="11"
+					Background="#FFD7D7D7" />
+				<TextBox
+					x:Name="mainToolsList"
+					Grid.Column="3"
+					BorderBrush="Black"
+					Grid.RowSpan="1"
+					Height="{Binding}"
+					Width="{Binding}"
+					Margin="0,0,0,0"
+					VerticalAlignment="Stretch"
+					HorizontalAlignment="Stretch"
+					BorderThickness="1,1,1,2"
+					AcceptsReturn="True"
+					TextWrapping="Wrap"
+					Grid.Row="4"
+					FontSize="11"
+					FontFamily="Times New Roman"
+				/>
+				<TextBox
+					x:Name="ActualDocsGrid"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					Grid.Column="4"
+					BorderBrush="Black"
+					Grid.RowSpan="1"
+					Height="{Binding}"
+					Width="{Binding}"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					Margin="0,0,0,0"
+					BorderThickness="1,1,2,2"
+					AcceptsReturn="True"
+					TextWrapping="Wrap"
+					Grid.Row="4" />
+				<TextBox
+					Grid.Column="2"
+					Margin="0,0,0,0"
+					Height="{Binding}"
+					VerticalAlignment="Stretch"
+					HorizontalAlignment="Stretch"
+					Grid.RowSpan="1"
+					BorderBrush="Black"
+					BorderThickness="1,1,1,2"
+					Grid.Row="4"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					x:Name="SUOT" />
+				<TextBox
+					FontSize="11"
+					FontFamily="Times New Roman"
+					Grid.Column="3"
+					Grid.Row="1"
+					Grid.RowSpan="1"
+					Height="{Binding}"
+					Width="{Binding}"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					Margin="0,0,0,0"
+					BorderBrush="Black"
+					x:Name="НазваниеТК"
+					VerticalContentAlignment="Center"
+					Grid.ColumnSpan="2"
+					BorderThickness="1,2,2,1" />
+				<TextBox
+					FontSize="11"
+					FontFamily="Times New Roman"
+					Grid.Column="3"
+					BorderBrush="Black"
+					x:Name="Цех"
+					Margin="0,0,0,0"
+					HorizontalAlignment="Stretch"
+					Width="{Binding}"
+					Grid.ColumnSpan="2"
+					VerticalAlignment="Stretch"
+					VerticalContentAlignment="Center"
+					Height="{Binding}"
+					Grid.RowSpan="1"
+					BorderThickness="1,1,2,1"
+					Grid.Row="2" />
+				<TextBox
+					Grid.Column="1"
+					Grid.ColumnSpan="2"
+					BorderBrush="Black"
+					Height="{Binding}"
+					Width="{Binding}"
+					Margin="0,0,0,0"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					Grid.RowSpan="1"
+					Text="Область применения"
+					x:Name="ОблПрим"
+					IsEnabled="True"
+					Grid.Row="2"
+					Background="#FFD7D7D7"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					VerticalContentAlignment="Center" />
+				<TextBox
+					Grid.Column="1"
+					BorderBrush="Black"
+					Grid.ColumnSpan="1"
+					Height="{Binding}"
+					Width="{Binding}"
+					VerticalAlignment="Stretch"
+					HorizontalAlignment="Stretch"
+					Margin="0,0,0,0"
+					Text="№ п/п"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					HorizontalContentAlignment="Center"
+					TextWrapping="Wrap"
+					VerticalContentAlignment="Center"
+					x:Name="пп"
+					IsEnabled="True"
+					Grid.Row="3"
+					Background="#FFD7D7D7" />
+				<TextBox
+					Grid.Column="0"
+					Text="2"
+					Height="{Binding}"
+					Width="{Binding}"
+					Grid.ColumnSpan="1"
+					Grid.RowSpan="1"
+					HorizontalAlignment="Stretch"
+					TextAlignment="Center"
+					VerticalAlignment="Stretch"
+					VerticalContentAlignment="Center"
+					HorizontalContentAlignment="Center"
+					Margin="0,0,0,0"
+					BorderBrush="Black"
+					x:Name="Row2"
+					IsEnabled="True"
+					BorderThickness="2,1,1,1"
+					Grid.Row="2"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					Background="#FFD7D7D7" />
+				<TextBox
+					x:Name="пп1"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					Grid.Column="1"
+					BorderBrush="Black"
+					Grid.RowSpan="1"
+					Grid.ColumnSpan="1"
+					Margin="0,0,0,0"
+					HorizontalAlignment="Stretch"
+					HorizontalContentAlignment="Center"
+					VerticalAlignment="Stretch"
+					BorderThickness="1,1,1,2"
+					Grid.Row="4" />
+				<TextBox
+					Grid.Column="0"
+					BorderBrush="Black"
+					Margin="0,0,0,0"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					Grid.RowSpan="2"
+					Text="3"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					VerticalContentAlignment="Center"
+					HorizontalContentAlignment="Center"
+					BorderThickness="2,1,1,2"
+					x:Name="Row3"
+					Grid.Row="3"
+					Background="#FFD7D7D7" />
+				<TextBox
+					BorderBrush="Black"
+					BorderThickness="1,0,1,0"
+					FontWeight="Bold"
+					Text="{Binding Path=docIVM.DocCode, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+					FontSize="11"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					x:Name="NumOfTC"
+					Grid.Column="0"
+					Grid.ColumnSpan="5"
+					Grid.Row="0"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					Margin="0,0,0,0"
+					Grid.RowSpan="1"
+					FontFamily="Arial" />
+			</Grid>
+		</Grid>
+								</FixedPage>							
+							</PageContent>
+							<PageContent>
+								<FixedPage Width="29.7cm" Height="21.0cm">
+		<Grid
+			Width="29.7cm"
+			Height="21.0cm"
+			VerticalAlignment="Top"
+			HorizontalAlignment="Stretch"
+			x:Name="A41"
+			ShowGridLines="True"
+			Background="{x:Null}">
+			<Grid.RowDefinitions>
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid
+				x:Name="_6_anoter1"
+				Margin="50,50,50,50"
+				Background="White"
+				VerticalAlignment="Top"
+				Panel.ZIndex="9"
+				Grid.Column="1"
+				ShowGridLines="False">
+				<Grid.RowDefinitions>
+					<RowDefinition
+						x:Name="NumberOfCard1"
+						Height="0.5cm" />
+					<RowDefinition
+						Height="0.5cm" />
+					<RowDefinition
+						Height="0.5cm" />
+					<RowDefinition
+						Height="Auto" />
+					<RowDefinition
+						Height="Auto" />
+					<RowDefinition
+						Height="*" />
+					<RowDefinition
+						Height="*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition
+						Width="0.8cm" />
+					<ColumnDefinition
+						Width="0.8cm" />
+					<ColumnDefinition
+						Width="5.0cm" />
+					<ColumnDefinition
+						Width="9.5cm" />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<Grid
+					x:Name="numberAndListsTitle1"
+					Grid.Column="4"
+					Background="#FFFF7D7D"
+					VerticalAlignment="Top"
+					HorizontalAlignment="Right"
+					IsEnabled="True"
+					ShowGridLines="False"
+					Grid.Row="5">
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="0.5cm" />
+						<RowDefinition
+							Height="0.5cm" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="1.5cm" />
+						<ColumnDefinition
+							Width="2.0cm" />
+					</Grid.ColumnDefinitions>
+					<TextBox
+						Grid.Column="1"
+						Grid.Row="0"
+						HorizontalAlignment="Stretch"
+						Grid.RowSpan="1"
+						Height="{Binding}"
+						BorderBrush="Black"
+						Margin="0,0,0,0"
+						TextAlignment="Center"
+						VerticalContentAlignment="Center"
+						VerticalAlignment="Stretch"
+						Text="Листов"
+						x:Name="Листов1"
+						FontSize="11"
+						FontFamily="Times New Roman"
+						HorizontalContentAlignment="Center"
+						BorderThickness="1,0,2,1"
+						Background="#FFD7D7D7" />
+					<TextBox
+						BorderBrush="Black"
+						x:Name="колвоЛистов1"
+						Grid.Column="1"
+						Grid.Row="1"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
+						Margin="0,0,0,0"
+						BorderThickness="1,1,2,2"
+						FontFamily="Times New Roman"
+						FontSize="11" />
+					<TextBox
+						Grid.Column="0"
+						Grid.Row="1"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
+						Margin="0,0,0,0"
+						Grid.ColumnSpan="1"
+						x:Name="НомЛиста1"
+						BorderBrush="Black"
+						BorderThickness="2,1,1,2"
+						FontFamily="Times New Roman"
+						FontSize="11" />
+					<TextBox
+						Grid.Column="0"
+						Grid.Row="0"
+						HorizontalAlignment="Stretch"
+						Grid.ColumnSpan="1"
+						TextAlignment="Center"
+						VerticalAlignment="Stretch"
+						Margin="0,0,0,0"
+						BorderBrush="Black"
+						Grid.RowSpan="1"
+						Text="Лист"
+						FontSize="11"
+						FontFamily="Times New Roman"
+						BorderThickness="2,0,1,1"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						Background="#FFD7D7D7" />
+				</Grid>
+				
+				<TextBox
+					Text="1"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					Grid.Column="0"
+					Grid.Row="1"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					Grid.ColumnSpan="1"
+					Grid.RowSpan="1"
+					x:Name="Row111"
+					VerticalContentAlignment="Center"
+					HorizontalContentAlignment="Center"
+					BorderBrush="Black"
+					IsEnabled="True"
+					BorderThickness="2,2,1,1"					
+					Margin="0,0,0,0"					
+					Background="#FFD7D7D7" />
+				
+				<TextBox
+					Grid.Column="1"
+					Grid.Row="1"
+					Grid.RowSpan="1"
+					Margin="0,0,0,0"
+					Grid.ColumnSpan="2"
+					HorizontalAlignment="Stretch"
+					BorderBrush="Black"
+					x:Name="НаименованиеРабот1"
+					Text="Наименование работ"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					VerticalContentAlignment="Center"
+					VerticalAlignment="Stretch"
+					IsEnabled="True"
+					BorderThickness="1,2,1,1"
+					Background="#FFD7D7D7" />
+				<TextBox
+					Grid.Column="3"
+					Height="{Binding}"
+					Margin="0,0,0,0"
+					VerticalAlignment="Stretch"
+					HorizontalAlignment="Stretch"
+					Grid.RowSpan="1"
+					BorderBrush="Black"
+					Text="Перечень применяемого оборудования, приспособлений, инструментов, инвентаря и СИЗ"
+					TextWrapping="Wrap"
+					VerticalContentAlignment="Center"
+					HorizontalContentAlignment="Center"
+					x:Name="ПереченьИнстр1"
+					IsEnabled="True"
+					Grid.Row="3"
+					Background="#FFD7D7D7"
+					FontFamily="Times New Roman"
+					FontSize="11" />
+				<TextBox
+					Grid.Column="4"
+					BorderBrush="Black"
+					Height="{Binding}"
+					Margin="0,0,0,0"
+					Width="{Binding}"
+					VerticalAlignment="Stretch"
+					HorizontalAlignment="Stretch"
+					Text="Перечень нормативных документов"
+					FontSize="11"
+					TextWrapping="Wrap"
+					TextAlignment="Center"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					BorderThickness="1,1,2,1"
+					IsEnabled="True"
+					Grid.Row="3"
+					Background="#FFD7D7D7"
+					FontFamily="Times New Roman" />
+				<TextBox
+					Grid.Column="2"
+					HorizontalAlignment="Stretch"
+					BorderBrush="Black"
+					VerticalAlignment="Stretch"
+					Margin="0,0,0,0"
+					HorizontalContentAlignment="Center"
+					TextAlignment="Center"
+					VerticalContentAlignment="Center"
+					Height="{Binding}"
+					Text="Условия работы"
+					x:Name="УсловияРаб1"
+					IsEnabled="True"
+					TextWrapping="Wrap"
+					Grid.Row="3"
+					FontFamily="Times New Roman"
+					FontSize="11"
+					Background="#FFD7D7D7" />
+				<TextBox
+					x:Name="mainToolsList1"
+					Grid.Column="3"
+					BorderBrush="Black"
+					Grid.RowSpan="1"
+					Height="{Binding}"
+					Width="{Binding}"
+					Margin="0,0,0,0"
+					VerticalAlignment="Stretch"
+					HorizontalAlignment="Stretch"
+					BorderThickness="1,1,1,2"
+					AcceptsReturn="True"
+					TextWrapping="Wrap"
+					Grid.Row="4"
+					FontSize="11"
+					FontFamily="Times New Roman"
+				/>
+				<TextBox
+					x:Name="ActualDocsGrid1"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					Grid.Column="4"
+					BorderBrush="Black"
+					Grid.RowSpan="1"
+					Height="{Binding}"
+					Width="{Binding}"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					Margin="0,0,0,0"
+					BorderThickness="1,1,2,2"
+					AcceptsReturn="True"
+					TextWrapping="Wrap"
+					Grid.Row="4" />
+				<TextBox
+					Grid.Column="2"
+					Margin="0,0,0,0"
+					Height="{Binding}"
+					VerticalAlignment="Stretch"
+					HorizontalAlignment="Stretch"
+					Grid.RowSpan="1"
+					BorderBrush="Black"
+					BorderThickness="1,1,1,2"
+					Grid.Row="4"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					x:Name="SUOT1" />
+				<TextBox
+					FontSize="11"
+					FontFamily="Times New Roman"
+					Grid.Column="3"
+					Grid.Row="1"
+					Grid.RowSpan="1"
+					Height="{Binding}"
+					Width="{Binding}"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					Margin="0,0,0,0"
+					BorderBrush="Black"
+					x:Name="НазваниеТК1"
+					VerticalContentAlignment="Center"
+					Grid.ColumnSpan="2"
+					BorderThickness="1,2,2,1" />
+				<TextBox
+					FontSize="11"
+					FontFamily="Times New Roman"
+					Grid.Column="3"
+					BorderBrush="Black"
+					x:Name="Цех1"
+					Margin="0,0,0,0"
+					HorizontalAlignment="Stretch"
+					Width="{Binding}"
+					Grid.ColumnSpan="2"
+					VerticalAlignment="Stretch"
+					VerticalContentAlignment="Center"
+					Height="{Binding}"
+					Grid.RowSpan="1"
+					BorderThickness="1,1,2,1"
+					Grid.Row="2" />
+				<TextBox
+					Grid.Column="1"
+					Grid.ColumnSpan="2"
+					BorderBrush="Black"
+					Height="{Binding}"
+					Width="{Binding}"
+					Margin="0,0,0,0"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					Grid.RowSpan="1"
+					Text="Область применения"
+					x:Name="ОблПрим1"
+					IsEnabled="True"
+					Grid.Row="2"
+					Background="#FFD7D7D7"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					VerticalContentAlignment="Center" />
+				<TextBox
+					Grid.Column="1"
+					BorderBrush="Black"
+					Grid.ColumnSpan="1"
+					Height="{Binding}"
+					Width="{Binding}"
+					VerticalAlignment="Stretch"
+					HorizontalAlignment="Stretch"
+					Margin="0,0,0,0"
+					Text="№ п/п"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					HorizontalContentAlignment="Center"
+					TextWrapping="Wrap"
+					VerticalContentAlignment="Center"
+					x:Name="пп11"
+					IsEnabled="True"
+					Grid.Row="3"
+					Background="#FFD7D7D7" />
+				<TextBox
+					Grid.Column="0"
+					Text="2"
+					Height="{Binding}"
+					Width="{Binding}"
+					Grid.ColumnSpan="1"
+					Grid.RowSpan="1"
+					HorizontalAlignment="Stretch"
+					TextAlignment="Center"
+					VerticalAlignment="Stretch"
+					VerticalContentAlignment="Center"
+					HorizontalContentAlignment="Center"
+					Margin="0,0,0,0"
+					BorderBrush="Black"
+					x:Name="Row21"
+					IsEnabled="True"
+					BorderThickness="2,1,1,1"
+					Grid.Row="2"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					Background="#FFD7D7D7" />
+				<TextBox
+					x:Name="пп111"
+					FontSize="111"
+					FontFamily="Times New Roman"
+					Grid.Column="1"
+					BorderBrush="Black"
+					Grid.RowSpan="1"
+					Grid.ColumnSpan="1"
+					Margin="0,0,0,0"
+					HorizontalAlignment="Stretch"
+					HorizontalContentAlignment="Center"
+					VerticalAlignment="Stretch"
+					BorderThickness="1,1,1,2"
+					Grid.Row="4" />
+				<TextBox
+					Grid.Column="0"
+					BorderBrush="Black"
+					Margin="0,0,0,0"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					Grid.RowSpan="2"
+					Text="3"
+					FontSize="11"
+					FontFamily="Times New Roman"
+					VerticalContentAlignment="Center"
+					HorizontalContentAlignment="Center"
+					BorderThickness="2,1,1,2"
+					x:Name="Row31"
+					Grid.Row="3"
+					Background="#FFD7D7D7" />
+				<TextBox
+					BorderBrush="Black"
+					BorderThickness="1,0,1,0"
+					FontWeight="Bold"
+					Text="{Binding Path=docIVM.DocCode, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+					FontSize="11"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					x:Name="NumOfTC1"
+					Grid.Column="0"
+					Grid.ColumnSpan="5"
+					Grid.Row="0"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					Margin="0,0,0,0"
+					Grid.RowSpan="1"
+					FontFamily="Arial" />
+			</Grid>
+		</Grid>
+								</FixedPage>
+							</PageContent>
+						</FixedDocument>
+
+				</TabItem>
+			</TabControl>
+		</SelectiveScrollingGrid>
+	</DockPanel>
+</Window>
